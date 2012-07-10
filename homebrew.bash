@@ -33,4 +33,4 @@ brew install curl w3m
 brew install wget --enable-iri
 
 echo "Other tools"
-brew install keychain ssh-copy-id coreutils
+brew install keychain ssh-copy-id coreutils htop-osx
