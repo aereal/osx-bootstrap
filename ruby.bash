@@ -19,5 +19,5 @@ rbenv global $current_ruby_version
 
 gem update --system
 gem update
-gem install bundler hub
+gem install bundler pry pry-doc powder
 rbenv rehash
