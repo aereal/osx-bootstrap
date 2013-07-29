@@ -31,11 +31,16 @@ brew_install git --enable-pcre
 brew_install tig
 
 brew_install zsh --disable-etcdir
+brew_install zsh-completions
+brew_install zsh-syntax-highlighting
 brew_install tmux reattach-to-user-namespace
 
-brew_install readline openssl
+brew_install readline openssl libyaml
 brew_install rbenv ruby-build
 
 brew_install coreutils
+brew_install the_silver_searcher
+brew_install pstree
+brew_install hub
 brew_install wget --enable-iri
 brew_install node
