@@ -44,3 +44,7 @@ brew_install pstree
 brew_install hub
 brew_install wget --enable-iri
 brew_install node
+
+_info "Latest MacVim"
+brew_install lua
+brew_install macvim --with-lua --HEAD
