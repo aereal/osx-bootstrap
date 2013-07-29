@@ -22,7 +22,7 @@ function brew_install() {
 
 if ! which brew >/dev/null; then
   _warn "Homebrew is not installed"
-  /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/aereal/master/Library/Contributions/install_homebrew.rb)"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 else
   _info "Homebrew is installed ($(brew --prefix))"
 fi
