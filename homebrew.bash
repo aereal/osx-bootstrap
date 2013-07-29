@@ -1,36 +1,41 @@
 #!/bin/bash
 
-if [[ ! -x $(/usr/bin/which -s brew) ]]; then
-  echo "Homebrew is not found, try to install"
+function _info() {
+  # green
+  printf '[\e[32mINFO\e[0m] %s\n' "$*" > /dev/stderr
+}
+
+function _warn() {
+  # yellow
+  printf '[\e[33mWARN\e[0m] %s\n' "$*" > /dev/stderr
+}
+
+function _error() {
+  # red
+  printf '[\e[31mERROR\e[0m] %s\n' "$*" > /dev/stderr
+}
+
+function brew_install() {
+  _info "brew install $*"
+  brew install $*
+}
+
+if ! which brew >/dev/null; then
+  _warn "Homebrew is not installed"
   /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/aereal/master/Library/Contributions/install_homebrew.rb)"
+else
+  _info "Homebrew is installed ($(brew --prefix))"
 fi
 
-echo "First, install Git"
-brew install git
+brew_install git --enable-pcre
+brew_install tig
 
-brew update
+brew_install zsh --disable-etcdir
+brew_install tmux reattach-to-user-namespace
 
-echo "Essential libraries (openssl,readline)"
-brew install openssl readline
-brew link openssl
-brew link readline
+brew_install readline openssl
+brew_install rbenv ruby-build
 
-echo "Heavy duty tools"
-brew install tig tmux zsh
-brew install reattach-to-user-namespace
-
-echo "rbenv and ruby-build"
-brew install rbenv ruby-build
-
-echo "Databases"
-brew install mysql redis
-
-echo "Install Node.js"
-brew install node
-
-echo "Web tools"
-brew install curl w3m
-brew install wget --enable-iri
-
-echo "Other tools"
-brew install keychain ssh-copy-id coreutils htop-osx
+brew_install coreutils
+brew_install wget --enable-iri
+brew_install node
