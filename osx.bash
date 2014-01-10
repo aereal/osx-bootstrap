@@ -1,8 +1,3 @@
-if sw_vers -productVersion | grep -vq '10[.]8'; then
-  echo "The script currently supports only OS X Mountain Lion (10.8)" > /dev/stderr
-  exit 1
-fi
-
 # フルキーボードアクセスを有効にする (Tabですべてのコントロールにフォーカスできるようになる)
 defaults write -g AppleKeyboardUIMode -int 3
 
